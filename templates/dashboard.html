@@ -1,0 +1,90 @@
+<!-- templates/dashboard.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome, {{ email }}</h1>
+    </header>
+
+    <!-- Generate Notes Section -->
+    <section class="form-section">
+        <h2>Generate New Notes</h2>
+        <form method="POST" action="{{ url_for('generate_notes') }}">
+            <div class="form-group">
+                <input type="text" name="subject" placeholder="Enter subject name" required>
+            </div>
+            <div class="form-group">
+                <textarea name="syllabus" placeholder="Enter syllabus text" rows="6" cols="50" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="button">Generate Notes</button>
+            </div>
+        </form>
+    </section>
+
+    <hr>
+
+    <!-- Create Folder Section -->
+    <section class="form-section">
+        <h2>Create New Folder</h2>
+        <form method="POST" action="{{ url_for('add_folder') }}">
+            <div class="form-group">
+                <input type="text" name="folder_name" placeholder="Enter folder name" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="button">Add Folder</button>
+            </div>
+        </form>
+    </section>
+
+    <hr>
+
+    <!-- Folders List Section -->
+    <section class="folder-section">
+        <h2>Your Folders</h2>
+        <div class="folder-cards">
+            {% for folder in folders %}
+                <div class="folder-card">
+                    <a href="{{ url_for('dashboard') }}?folder_id={{ folder._id }}">
+                        <div class="folder-icon"></div>
+                        <h4>{{ folder.name }}</h4>
+                    </a>
+                    {% if folder.is_default %}
+                        <span class="default-label">(default)</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- Notes Display Section -->
+    <section class="notes-section">
+        <h2>Notes in Folder:</h2>
+        {% if active_folder_id in notes_by_folder %}
+            <div class="notes-cards">
+                {% for note in notes_by_folder[active_folder_id] %}
+                    <div class="note-card">
+                        <h4>{{ note.subject }}</h4>
+                        <p class="note-content">{{ note.content[:200] }}...</p> <!-- Show a preview -->
+                        <a href="{{ url_for('note_reading', note_id=note._id) }}" class="read-more">Read More</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No notes in this folder.</p>
+        {% endif %}
+    </section>
+
+</body>
+</html>

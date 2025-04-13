@@ -1,0 +1,21 @@
+<!-- note_reading.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ note.subject }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="note-container">
+        <h1>{{ note.subject }}</h1>
+        <div class="note-content">
+            <!-- Render the note content as HTML -->
+            <div>{{ note.content | safe }}</div>
+        </div>
+        <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </div>
+</body>
+</html>

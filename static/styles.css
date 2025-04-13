@@ -1,0 +1,130 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fb;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    margin: 30px 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+/* Form Section Styling */
+.form-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Folder Cards Styling */
+.folder-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.folder-card {
+    background-color: white;
+    width: 150px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.folder-card:hover {
+    transform: translateY(-5px);
+}
+
+.folder-icon {
+    width: 50px;
+    height: 50px;
+    background: url('/static/images/folder-icon.png') no-repeat center center;
+    background-size: contain;
+}
+
+.folder-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.default-label {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Notes Section Styling */
+.notes-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.note-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 45%;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+}
+
+.note-content {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.read-more {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
